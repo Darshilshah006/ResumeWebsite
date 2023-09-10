@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            background-color: black;
+            
+        }
+
+        .navbar ul {
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 13px 20px;
+            cursor: pointer;
+           
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            text-decoration: none;
+            color: white;
+            
+        }
+
+        .navbar li a:hover {
+            color: red
+        }
+
+        .search {
+            float: right;
+            color: white;
+            padding: 12px 75px;
+        }
+
+        .navbar input {
+            border: 2px solid black;
+            padding: 3px 5px;
+            width: 129px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li class="home"><a href="home.html" target="content">Home</a></li>
+                <li><a href="about.html" target="content">About</a></li>
+                <li><a href="Resume.html" target="content">Resume</a></li>
+                <li><a href="contact.html" target="content">Contact</a></li>
+                
+                <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Search this website">
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+    <script>
+
+        var listItems = document.querySelectorAll('.navbar li a');
+        var previousItem = null; 
+        for (var i = 0; i < listItems.length; i++) {
+          
+            listItems[i].addEventListener('click', function () {
+              
+                this.style.backgroundColor = 'aquamarine';
+                this.style.padding = '10px 20px';
+                this.style.borderRadius = '10px';
+                this.style.color='black';
+               
+                if (previousItem !== null) {
+                    previousItem.style.backgroundColor = '';
+                    previousItem.style.padding = '';
+                    previousItem.style.borderRadius = '';
+                    previousItem.style.color='';
+                }
+               
+                previousItem = this;
+            });
+        }
+        var search = document.getElementById('search');
+        /*Search anything in google in new tab*/
+        search.addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                window.open('https://www.google.com/search?q=' + search.value, '_blank');
+            }
+        });
+    </script>
+</body>
+
+</html>
